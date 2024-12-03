@@ -5,6 +5,10 @@ function createUser(user){
 
 }
 
+function LoginUser (user) {
+  return axios.post("http://127.0.0.1:3000/todolist/LoginUser", user)
+}
+
 export default {
-  createUser
+  createUser, LoginUser
 }

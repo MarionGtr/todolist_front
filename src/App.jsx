@@ -6,6 +6,7 @@ import CreateUser from './Pages/CreateUser';
 import AddTask from './Pages/AddTask';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
+import Login from './Pages/Login';
 
 
 function App() {
@@ -15,7 +16,8 @@ function App() {
       <Routes>
         <Route path='/' element={<HomePage></HomePage>}></Route>
         <Route path='/add' element={<AddTask></AddTask>}></Route>
-        <Route path='/createUser' element={<CreateUser></CreateUser>}></Route>
+        <Route path='/register' element={<CreateUser></CreateUser>}></Route>
+        <Route path='/login' element={<Login></Login>}></Route>
       </Routes>
 
       <ToastContainer

@@ -15,9 +15,11 @@ const handleSubmit = async (e) => {
     e.preventDefault()
     try {
         const response = await UserService.createUser(user)
+        alert("Inscription réussie!")
         console.log(response)
     } catch (error) {
         console.log(error)
+        alert("Erreur lors de l'inscription, veuillez réessayer")
     }
     console.log(user)
     
@@ -33,7 +35,7 @@ const handleSubmit = async (e) => {
         <Form.Control 
         type="text" 
         placeholder="Saisir un nom"
-        onChange={handleChange}
+        onChange={handleChange} required
         name="nom"
         />
 
@@ -43,7 +45,7 @@ const handleSubmit = async (e) => {
         <Form.Control
          type="email"
          placeholder="Saisir une adresse mail" 
-         onChange={handleChange}
+         onChange={handleChange} required
          name="mail"
          />
     
@@ -54,7 +56,7 @@ const handleSubmit = async (e) => {
         <Form.Control 
         type="password"
          placeholder="Mot de passe"
-         onChange={handleChange}
+         onChange={handleChange} required
          name="mdp"
          />
       </Form.Group>

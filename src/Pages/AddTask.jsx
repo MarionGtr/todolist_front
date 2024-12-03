@@ -10,6 +10,10 @@ const AddTask = () => {
     setTask({...task, [e.target.name]: e.target.value})
     }
 
+    const reloadPage = () => {
+        window.location.reload()
+    }
+
     const handleSubmit = async (e) => {
         //bloquer le rafraichissement de la page
         e.preventDefault();
@@ -17,6 +21,7 @@ const AddTask = () => {
             const response = await TaskService.addTask(task)
             console.log(response)
             toast.success("Tâche ajoutée avec succès")
+            reloadPage()
         } catch (error) {
             toast.error("Erreur lors de l'ajout de la tâche")
             console.log(error)
@@ -37,7 +42,7 @@ const AddTask = () => {
                     placeholder="libelle"
                     aria-label="libelle"
                     aria-describedby="basic-addon1"
-                    onChange={handleChange}
+                    onChange={handleChange} required
                     name="nom_task"
                 />
             </InputGroup>
@@ -48,7 +53,7 @@ const AddTask = () => {
                     placeholder="description"
                     aria-label="description"
                     aria-describedby="basic-addon1"
-                    onChange={handleChange}
+                    onChange={handleChange} required
                     name="description"
                 />
             </InputGroup>
@@ -59,7 +64,7 @@ const AddTask = () => {
                     placeholder="Utilisateur"
                     aria-label="user"
                     aria-describedby="basic-addon1"
-                    onChange={handleChange}
+                    onChange={handleChange} required
                     name="user"
                 />
             </InputGroup>

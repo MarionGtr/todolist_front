@@ -1,7 +1,28 @@
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
+import TaskService from '../TaskService';
+
+
 
 const Checklist = ({ task }) => {
+
+    const reloadPage = () => {
+        window.location.reload()
+    }
+
+    const supprTask = async () => {
+    
+        try {
+            const response = await TaskService.deleteTask(task)
+            reloadPage()
+            console.log(response)
+
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+
     return (
         <>
             {['Light'].map((variant) => (
@@ -16,12 +37,14 @@ const Checklist = ({ task }) => {
                     <Card.Body>
                         <Card.Text>
                             {task.description}
-                            <div className='div-btn-card'>
+
+                        <span className='div-btn-card'>
                             <Button variant="outline-success">✓</Button>
                             <Button variant="outline-warning">🖉</Button>
-                            <Button variant="outline-danger">X</Button>
-                            </div>
+                            <Button variant="outline-danger" onClick={() => supprTask(task.id_task)}>X</Button>
+                        </span>
                         </Card.Text>
+
                     </Card.Body>
                 </Card>
             ))}
